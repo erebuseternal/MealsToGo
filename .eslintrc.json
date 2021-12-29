@@ -1,36 +1,31 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["plugin:react/recommended", "airbnb", "airbnb/hooks", "prettier"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-        "plugin:react/recommended",
-        "airbnb",
-        "airbnb/hooks",
-        "prettier"
-    ],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 13,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react",
-        "react-native"
-    ],
-    "rules": {
-        // allow .js files to contain JSX code
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-            
-        // prevent eslint to complain about the "styles" variable being used before it was defined
-        "no-use-before-define": ["error", { "variables": false }],
+    "ecmaVersion": 13,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "react-native"],
+  "rules": {
+    // allow .js files to contain JSX code
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
 
-        // ignore errors for the react-navigation package
-        "react/prop-types": ["error", {"ignore": ["navigation", "navigation.navigate"]}],
+    // prevent eslint to complain about the "styles" variable being used before it was defined
+    "no-use-before-define": ["error", { "variables": false }],
 
-        // suppress errors for missing 'import React' in files
-        "react/react-in-jsx-scope": "off"
-    }
+    // ignore errors for the react-navigation package
+    "react/prop-types": ["error", { "ignore": ["navigation", "navigation.navigate"] }],
+
+    // suppress errors for missing 'import React' in files
+    "react/react-in-jsx-scope": "off",
+
+    // suppress errors around default import
+    "import/prefer-default-export": "off"
+  }
 }
