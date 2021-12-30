@@ -1,4 +1,3 @@
-import { isLoading } from 'expo-font';
 import React, { createContext, useState, useEffect } from 'react';
 
 import { locationRequest, locationTransform } from './location.service';
