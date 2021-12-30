@@ -1,13 +1,10 @@
 import React, { useState, useContext } from 'react';
 import styled from 'styled-components/native';
 import { SafeAreaView, StatusBar, View, FlatList } from 'react-native';
-import { Searchbar } from 'react-native-paper';
+import { Searchbar, ActivityIndicator, Colors } from 'react-native-paper';
 
 import { RestaurantInfoCard } from '../components/restaurant-info-card.components';
-import {
-  RestaurantContext,
-  RestaurantsContext,
-} from '../../../services/restaurants/restaurants.context';
+import { RestaurantsContext } from '../../../services/restaurants/restaurants.context';
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
@@ -38,6 +35,7 @@ export function RestaurantsScreen() {
       <SearchView>
         <Searchbar placeholder="Search" onChangeText={onChangeSearch} value={searchQuery} />
       </SearchView>
+      {isLoading && <ActivityIndicator animating color={Colors.red800} />}
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => <RestaurantInfoCard restaurant={item} />}
