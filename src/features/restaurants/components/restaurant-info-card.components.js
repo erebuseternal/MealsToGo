@@ -50,8 +50,8 @@ export function RestaurantInfoCard({ restaurant = {} }) {
     isOpenNow = true,
     rating = 4.3,
     isClosedTemporarily = false,
+    placeId = -1,
   } = restaurant;
-  console.log(restaurant);
 
   const ratingArray = Array.from(new Array(Math.round(rating)));
 
@@ -62,8 +62,8 @@ export function RestaurantInfoCard({ restaurant = {} }) {
         <RestaurantTitle>{name}</RestaurantTitle>
         <IconRow>
           <Rating>
-            {ratingArray.map(() => (
-              <SvgXml xml={star} width={20} height={20} />
+            {ratingArray.map((_, i) => (
+              <SvgXml key={`star-${placeId}-${i}`} xml={star} width={20} height={20} />
             ))}
           </Rating>
           {isClosedTemporarily && <TempClosed>Temporarily Closed</TempClosed>}
