@@ -35,10 +35,16 @@ const TempClosed = styled(Text)`
   color: ${(props) => props.theme.colors.ui.error};
 `;
 
-export function RestaurantInfoCard(restaurant = {}) {
+const Icon = styled.Image`
+  width: 15px;
+  height: 15px;
+  margin-left: 10px;
+`;
+
+export function RestaurantInfoCard({ restaurant = {} }) {
   const {
     name = "Giacomo's",
-    icon,
+    icon = null,
     photos = ['https://s3-media0.fl.yelpcdn.com/bphoto/pN5v1d_MhMP1an5I9Tx-8g/o.jpg'],
     address = '431 Columbus Ave, Boston, MA 02116',
     isOpenNow = true,
@@ -61,6 +67,7 @@ export function RestaurantInfoCard(restaurant = {}) {
           </Rating>
           {isClosedTemporarily && <TempClosed>Temporarily Closed</TempClosed>}
           {isOpenNow && !isClosedTemporarily && <SvgXml xml={open} width={30} height={30} />}
+          {icon && <Icon source={{ uri: icon }} />}
         </IconRow>
         <RestaurantBody>{address}</RestaurantBody>
       </Card.Content>
