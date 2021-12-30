@@ -46,11 +46,12 @@ export function RestaurantInfoCard({ restaurant = {} }) {
     name = "Giacomo's",
     icon = null,
     photos = ['https://s3-media0.fl.yelpcdn.com/bphoto/pN5v1d_MhMP1an5I9Tx-8g/o.jpg'],
-    address = '431 Columbus Ave, Boston, MA 02116',
+    vicinity = '431 Columbus Ave, Boston, MA 02116',
     isOpenNow = true,
     rating = 4.3,
     isClosedTemporarily = false,
   } = restaurant;
+  console.log(restaurant);
 
   const ratingArray = Array.from(new Array(Math.round(rating)));
 
@@ -69,7 +70,7 @@ export function RestaurantInfoCard({ restaurant = {} }) {
           {isOpenNow && !isClosedTemporarily && <SvgXml xml={open} width={30} height={30} />}
           {icon && <Icon source={{ uri: icon }} />}
         </IconRow>
-        <RestaurantBody>{address}</RestaurantBody>
+        <RestaurantBody>{vicinity}</RestaurantBody>
       </Card.Content>
     </RestaurantCard>
   );
