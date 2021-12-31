@@ -8,9 +8,13 @@ import { LocationContext } from '../../../services/location/location.context';
 const SearchView = styled(View)`
   justify-content: center;
   padding: ${(props) => props.theme.space[3]};
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  top: ${(props) => props.theme.space[4]};
 `;
 
-export function Search() {
+export function MapSearch() {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyword, setSearchKeyword] = useState(keyword);
 
@@ -21,6 +25,7 @@ export function Search() {
   return (
     <SearchView>
       <Searchbar
+        icon="map"
         placeholder="Search for a place"
         onSubmitEditing={() => {
           search(searchKeyword);

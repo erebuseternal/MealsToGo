@@ -5,19 +5,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
 import { RestaurantsNavigator } from './restaurants.navigator';
+import { MapScreen } from '../../features/map/screens/map.screen';
 
 function SettingsScreen() {
   return (
     <SafeAreaView>
       <Text>Settings will be in here</Text>
-    </SafeAreaView>
-  );
-}
-
-function MapScreen() {
-  return (
-    <SafeAreaView>
-      <Text>Map will be in here</Text>
     </SafeAreaView>
   );
 }
@@ -29,6 +22,7 @@ export function AppNavigator() {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
+          headerShown: false,
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
 
