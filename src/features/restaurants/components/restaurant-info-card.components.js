@@ -6,6 +6,7 @@ import { View, Text } from 'react-native';
 
 import star from '../../../../assets/star';
 import open from '../../../../assets/open';
+import { Favourite } from '../../../components/favourite/favourite.components';
 
 const RestaurantCard = styled(Card)`
   margin-bottom: ${(props) => props.theme.space[4]};
@@ -57,6 +58,7 @@ export function RestaurantInfoCard({ restaurant = {} }) {
 
   return (
     <RestaurantCard elevation={5}>
+      <Favourite restaurant={restaurant} />
       <Card.Cover key={name} source={{ uri: photos[0] }} />
       <Card.Content>
         <RestaurantTitle>{name}</RestaurantTitle>
