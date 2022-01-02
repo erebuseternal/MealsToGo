@@ -10,7 +10,7 @@ import { SafeArea } from '../components/safe-area.components';
 import { FavouritesContext } from '../../../services/favourites/favourites.context';
 import { FavouritesBar } from '../../../components/favourite/favourites-bar.components';
 
-const RestaurantList = styled(FlatList).attrs({
+export const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
     padding: 16,
   },

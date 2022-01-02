@@ -1,25 +1,15 @@
 /* eslint-disable react/no-unstable-nested-components */
-import React, { useContext } from 'react';
-import { SafeAreaView, Text, Button } from 'react-native';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
 import { RestaurantsNavigator } from './restaurants.navigator';
 import { MapScreen } from '../../features/map/screens/map.screen';
-import { AuthenticationContext } from '../../services/authentication/authentication.context';
 import { RestaurantsContextProvider } from '../../services/restaurants/restaurants.context';
 import { LocationContextProvider } from '../../services/location/location.context';
 import { FavouritesContextProvider } from '../../services/favourites/favourites.context';
-
-function SettingsScreen() {
-  const { onLogout } = useContext(AuthenticationContext);
-  return (
-    <SafeAreaView>
-      <Button title="logout" onPress={onLogout} />
-    </SafeAreaView>
-  );
-}
+import { SettingsNavigator } from './settings.navigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -52,7 +42,7 @@ export function AppNavigator() {
             >
               <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
               <Tab.Screen name="Map" component={MapScreen} />
-              <Tab.Screen name="Settings" component={SettingsScreen} />
+              <Tab.Screen name="Settings" component={SettingsNavigator} />
             </Tab.Navigator>
           </RestaurantsContextProvider>
         </LocationContextProvider>
