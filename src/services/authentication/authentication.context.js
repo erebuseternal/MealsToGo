@@ -18,8 +18,7 @@ export function AuthenticationContextProvider({ children }) {
       })
       .catch((err) => {
         setIsLoading(false);
-        setError(err);
-        console.log(err);
+        setError(err.toString());
       });
   };
   return (
@@ -29,6 +28,7 @@ export function AuthenticationContextProvider({ children }) {
         isLoading,
         error,
         onLogin,
+        isAuthenticated: !!user,
       }}
     >
       {children}
