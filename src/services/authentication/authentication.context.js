@@ -1,6 +1,6 @@
 import React, { useState, createContext } from 'react';
 
-import { loginRequest, registerRequest } from './authentication.service';
+import { loginRequest, logoutRequest, registerRequest, checkAuth } from './authentication.service';
 
 export const AuthenticationContext = createContext();
 
@@ -15,6 +15,19 @@ export function AuthenticationContextProvider({ children }) {
       .then((u) => {
         setUser(u);
         setIsLoading(false);
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setError(err.toString());
+      });
+  };
+
+  const onLogout = () => {
+    setIsLoading(true);
+    logoutRequest()
+      .then(() => {
+        setIsLoading(false);
+        setUser(null);
       })
       .catch((err) => {
         setIsLoading(false);
@@ -38,6 +51,9 @@ export function AuthenticationContextProvider({ children }) {
         });
     }
   };
+
+  checkAuth(setUser);
+
   return (
     <AuthenticationContext.Provider
       value={{
@@ -45,6 +61,7 @@ export function AuthenticationContextProvider({ children }) {
         isLoading,
         error,
         onLogin,
+        onLogout,
         onRegister,
         isAuthenticated: !!user,
       }}
